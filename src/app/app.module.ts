@@ -34,7 +34,7 @@ import {
   MsalInterceptor,
 } from '@azure/msal-angular';
 
-const GRAPH_ENDPOINT = 'Enter_the_Graph_Endpoint_Herev1.0/me';
+const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
@@ -47,9 +47,9 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: 'Enter_the_Application_Id_Here',
-      authority: 'Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here',
-      redirectUri: 'Enter_the_Redirect_Uri_Here',
+      clientId: 'ffa6815b-ba87-413c-b44e-d274b340712f',
+      authority: 'https://login.microsoftonline.com/c0f48e84-1de0-40d2-9f7e-1285a0c1e0a5',
+      redirectUri: 'http://localhost:4200/profile',
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,
@@ -79,7 +79,12 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
     interactionType: InteractionType.Redirect,
     authRequest: {
-      scopes: ['user.read'],
+      scopes: [
+      'api://ffa6815b-ba87-413c-b44e-d274b340712f/admin/participant',
+      ],
+      // 'user.read'
+      // 'api://ffa6815b-ba87-413c-b44e-d274b340712f/admin/participant'
+      // 'api://ffa6815b-ba87-413c-b44e-d274b340712f/admin/payment'
     },
   };
 }

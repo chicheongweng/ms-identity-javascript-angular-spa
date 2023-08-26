@@ -7,6 +7,10 @@ import { MsalGuard } from '@azure/msal-angular';
 
 
 const routes: Routes = [
+  { path: 'redirect',
+    redirectTo: 'profile',
+    pathMatch: 'full'
+  },
   {
     path: 'profile',
     component: ProfileComponent,
